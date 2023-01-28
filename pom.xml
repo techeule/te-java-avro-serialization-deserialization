@@ -36,7 +36,7 @@
             <!-- Fixed Vulnerabilities: CVE-2022-42004 and CVE-2022-42003 -->
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.12.7</version>
+            <version>2.12.7.1</version>
         </dependency>
 
         <dependency>
