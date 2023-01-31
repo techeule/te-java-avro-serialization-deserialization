@@ -7,8 +7,8 @@ At [TechEule.com](https://techeule.com/) you can find more info about this repos
 
 ## Code
 
-The Java-Code is written as Unit-Tests:
-[`src/test/java/com/techeule/examples/avro/AvroSerializationAndDeSerializationTest.java`](./src/test/java/com/techeule/examples/avro/AvroSerializationAndDeSerializationTest.java)
+The main logic can be found in the class:
+[`src/main/java/com/techeule/examples/avro/AvroBytesSerializerDeSerializer.java`](./src/main/java/com/techeule/examples/avro/AvroBytesSerializerDeSerializer.java)
 
 The Avro-Schemas are located at:
 [`src/main/resources/avro-schemas/`](./src/main/resources/avro-schemas)
@@ -40,13 +40,15 @@ Output ends with something like:
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running com.techeule.examples.avro.AvroSerializationAndDeSerializationTest
+[INFO] Running com.techeule.examples.avro.AvroBytesSerializerDeSerializerTest
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Objavro.schema�{"type":"record","name":"Order","namespace":"com.techeule.examples.avro.schemas","fields":[{"name":"orderId","type":{"type":"string","avro.java.string":"String"},"doc":"The ID of a given order"},{"name":"customerId","type":{"type":"string","avro.java.string":"String"},"doc":"The customer-ID which placed the order"},{"name":"orderDateEpochSecondsUTC","type":"long","doc":"Order date represented in number of seconds since epoch (00:00:00 UTC on 1 January 1970)"}]} ���P�{W�-D[.��Hef6a2ef8-41f1-40c6-824c-07f78b7e48fbHe043528c-4c93-4f0d-87ee-7d2bd478f2fe�ӣ�
-                                                                                                            ���P�{W�-D[.�
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.28 s - in com.techeule.examples.avro.AvroSerializationAndDeSerializationTest
+Objavro.schema�{"type":"record","name":"Order","namespace":"com.techeule.examples.avro.schemas","fields":[{"name":"orderId","type":{"type":"string","avro.java.string":"String"},"doc":"The ID of a given order"},{"name":"customerId","type":{"type":"string","avro.java.string":"String"},"doc":"The customer-ID which placed the order"},{"name":"orderDateEpochSecondsUTC","type":"long","doc":"Order date represented in number of seconds since epoch (00:00:00 UTC on 1 January 1970)"}]}0�T�@q��/�
+                          �j��Ha7e32a1f-863d-43e6-bf00-4dc7d865bda6Hf78fe4fe-045b-4364-913a-5980e090d06f�̽
+                                                                                                          0�T�@q��/�
+                                                                                                                    �j�
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.298 s - in com.techeule.examples.avro.AvroBytesSerializerDeSerializerTest
 [INFO] 
 [INFO] Results:
 [INFO] 
