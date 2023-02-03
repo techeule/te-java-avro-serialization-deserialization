@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import com.techeule.examples.avro.schemas.Order;
 
-class AvroBytesSerializerDeSerializerTest {
+class AvroToBytesSerializerDeserializerTest {
 
-    private static final AvroBytesSerializerDeSerializer<Order> orderAvroSerializerDeSerializer = new AvroBytesSerializerDeSerializer<>(Order.class);
+    private static final AvroToBytesSerializerDeserializer<Order> orderAvroSerializerDeSerializer = new AvroToBytesSerializerDeserializer<>(Order.class);
 
     @Test
     void serializeTest() {
@@ -26,7 +26,7 @@ class AvroBytesSerializerDeSerializerTest {
     }
 
     @Test
-    void deSerializeTest() {
+    void deserializeTest() {
         final var order1 = new Order(UUID.randomUUID().toString(),
                                      UUID.randomUUID().toString(),
                                      Instant.now().getEpochSecond());
@@ -36,14 +36,14 @@ class AvroBytesSerializerDeSerializerTest {
                                             .getEpochSecond());
 
         final var bytes = orderAvroSerializerDeSerializer.serialize(List.of(order1, order2));
-        final var deSerializedOrders = orderAvroSerializerDeSerializer.deSerialize(bytes);
+        final var deserializedOrders = orderAvroSerializerDeSerializer.deserialize(bytes);
 
-        assertThat(deSerializedOrders).hasSize(2);
-        assertDeSerializedOrder(order1, deSerializedOrders.get(0));
-        assertDeSerializedOrder(order2, deSerializedOrders.get(1));
+        assertThat(deserializedOrders).hasSize(2);
+        assertDeserializedOrder(order1, deserializedOrders.get(0));
+        assertDeserializedOrder(order2, deserializedOrders.get(1));
     }
 
-    private static void assertDeSerializedOrder(final Order expectedOrder,
+    private static void assertDeserializedOrder(final Order expectedOrder,
                                                 final Order actualOrder) {
         assertThat(expectedOrder).isNotSameAs(actualOrder);
         assertThat(expectedOrder.getOrderId()).isEqualTo(actualOrder.getOrderId());

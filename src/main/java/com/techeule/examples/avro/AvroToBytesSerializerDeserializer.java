@@ -13,11 +13,11 @@ import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
 
-public class AvroBytesSerializerDeSerializer<T extends GenericRecord> {
+public class AvroToBytesSerializerDeserializer<T extends GenericRecord> {
     private final SpecificDatumWriter<T> datumWriter;
     private final SpecificDatumReader<T> datumReader;
 
-    public AvroBytesSerializerDeSerializer(final Class<T> classType) {
+    public AvroToBytesSerializerDeserializer(final Class<T> classType) {
         Objects.requireNonNull(classType, "classType must not be null.");
         datumWriter = new SpecificDatumWriter<>(classType);
         datumReader = new SpecificDatumReader<>(classType);
@@ -41,13 +41,15 @@ public class AvroBytesSerializerDeSerializer<T extends GenericRecord> {
                                     final DataFileWriter<T> dataFileWriter,
                                     final List<T> records) throws IOException {
         dataFileWriter.create(records.get(0).getSchema(), byteArrayOutputStream);
-        for (int i = 0; i < records.size(); i++) {
-            final var nonNullRecord = Objects.requireNonNull(records.get(i), "records[" + i + "] must not be null");
-            dataFileWriter.append(nonNullRecord);
+
+        for (final T avroRecord : records) {
+            if (avroRecord != null) {
+                dataFileWriter.append(avroRecord);
+            }
         }
     }
 
-    public List<T> deSerialize(final byte[] data) {
+    public List<T> deserialize(final byte[] data) {
         try (final DataFileReader<T> dataFileReader = new DataFileReader<>(new SeekableByteArrayInput(data), datumReader)) {
             return tryToReadRecords(dataFileReader);
         } catch (final IOException e) {
@@ -57,6 +59,7 @@ public class AvroBytesSerializerDeSerializer<T extends GenericRecord> {
 
     private List<T> tryToReadRecords(final DataFileReader<T> dataFileReader) {
         final List<T> records = new LinkedList<>();
+
         while (dataFileReader.hasNext()) {
             records.add(dataFileReader.next());
         }

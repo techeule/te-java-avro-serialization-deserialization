@@ -1,14 +1,15 @@
-# Apache AVRO Serialization and De-Serialization java example for [TechEule.com](https://techeule.com/)
+# Apache Avro Serialization and Deserialization java example used on [TechEule.com](https://techeule.com/)
 
 > All provided paths in this file are relative to the root-folder
 > of this git-repository.
 
-At [TechEule.com](https://techeule.com/) you can find more info about this repository.
+In this blog post [https://techeule.com/posts/Simple-Java-Avro-Serializer-Deserializer/](https://techeule.com/posts/Simple-Java-Avro-Serializer-Deserializer/)
+you can find more info about this repository.
 
 ## Code
 
 The main logic can be found in the class:
-[`src/main/java/com/techeule/examples/avro/AvroBytesSerializerDeSerializer.java`](./src/main/java/com/techeule/examples/avro/AvroBytesSerializerDeSerializer.java)
+[`src/main/java/com/techeule/examples/avro/AvroToBytesSerializerDeserializer.java`](./src/main/java/com/techeule/examples/avro/AvroToBytesSerializerDeserializer.java)
 
 The Avro-Schemas are located at:
 [`src/main/resources/avro-schemas/`](./src/main/resources/avro-schemas)
@@ -40,23 +41,18 @@ Output ends with something like:
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running com.techeule.examples.avro.AvroBytesSerializerDeSerializerTest
-SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+[INFO] Running com.techeule.examples.avro.AvroToBytesSerializerDeserializerTest
+...
 Objavro.schema�{"type":"record","name":"Order","namespace":"com.techeule.examples.avro.schemas","fields":[{"name":"orderId","type":{"type":"string","avro.java.string":"String"},"doc":"The ID of a given order"},{"name":"customerId","type":{"type":"string","avro.java.string":"String"},"doc":"The customer-ID which placed the order"},{"name":"orderDateEpochSecondsUTC","type":"long","doc":"Order date represented in number of seconds since epoch (00:00:00 UTC on 1 January 1970)"}]}0�T�@q��/�
                           �j��Ha7e32a1f-863d-43e6-bf00-4dc7d865bda6Hf78fe4fe-045b-4364-913a-5980e090d06f�̽
                                                                                                           0�T�@q��/�
                                                                                                                     �j�
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.298 s - in com.techeule.examples.avro.AvroBytesSerializerDeSerializerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.298 s - in com.techeule.examples.avro.AvroToBytesSerializerDeserializerTest
 [INFO] 
 [INFO] Results:
 [INFO] 
 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
-[INFO] 
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ avro-serialization-deserialization ---
-[INFO] Building jar: <path-to-this-repo>/target/avro-serialization-deserialization-1.0-SNAPSHOT.jar
+...
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
